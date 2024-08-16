@@ -1,10 +1,10 @@
-import io from 'socket.io-client'
+import io from "socket.io-client";
 export const overrideStyle = {
-    display: 'flex',
-    margin: '0 auto',
-    height: '24px',
-    justifyContent: 'center',
-    alignItems: "center"
-}
+  display: "flex",
+  margin: "0 auto",
+  height: "24px",
+  justifyContent: "center",
+  alignItems: "center",
+};
 
-export const socket = io('http://localhost:5000')
+export const socket = io("https://shiningtn.onrender.com");
