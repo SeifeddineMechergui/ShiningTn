@@ -1,5 +1,5 @@
 import axios from 'axios'
-const local = 'https://shining-tn.vercel.app'
+const local = 'https://shiningtn.onrender.com'
 const production = ''
 const api = axios.create({
     baseURL: `${local}/api`,

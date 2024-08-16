@@ -1,5 +1,5 @@
 import axios from 'axios'
 const api = axios.create({
-    baseURL: 'https://shining-tn.vercel.app/api'
+    baseURL: 'https://shiningtn.onrender.com/api'
 })
 export default api
