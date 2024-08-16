@@ -14,7 +14,7 @@ const server = http.createServer(app)
 
 app.use(cors({
     origin: process.env.mode==='pro'?
-    [process.env.client_customer_production_url,process.env.client_admin_local_url]
+    [process.env.client_customer_production_url,process.env.client_admin_production_url]
     :['http://localhost:3001','http://localhost:3000'],
     credentials: true
 }))
