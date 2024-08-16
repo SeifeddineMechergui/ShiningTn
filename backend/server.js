@@ -13,7 +13,7 @@ const socket = require('socket.io')
 const server = http.createServer(app)
 
 app.use(cors({
-    origin: ['http://localhost:3000', 'http://localhost:3001'],
+    origin: ['https://shining-tn-r6b7.vercel.app', 'https://shining-tn-l8j5.vercel.app/login'],
     credentials: true
 }))
 
