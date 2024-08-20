@@ -1,6 +1,6 @@
 import axios from 'axios'
 const local = 'http://localhost:5000'
-const production = 'https://shiningtn.onrender.com'
+const production = 'https://shining-api.onrender.com'
 
 let api_url=''
 let mode='pro'
