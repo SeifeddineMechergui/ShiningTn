@@ -21,7 +21,7 @@ const Header = ({ showSidebar, setShowSidebar }) => {
                                 <span className='text-[14px] w-full font-normal'>{userInfo.role}</span>
                             </div>
                             {
-                                userInfo.role === 'admin' ? <img className='w-[45px] h-[45px] rounded-full overflow-hidden' src="http://localhost:3000/images/admin.jpg" alt="" /> : <img className='w-[45px] h-[45px] rounded-full overflow-hidden' src="http://localhost:3000/images/seller.png" alt="" />
+                                userInfo.role === 'admin' ? <img className='w-[45px] h-[45px] rounded-full overflow-hidden' src="https://shining-tn.vercel.app/images/admin.jpg" alt="" /> : <img className='w-[45px] h-[45px] rounded-full overflow-hidden' src="https://shining-tn.vercel.app/images/seller.png" alt="" />
                             }
                         </div>
                     </div>
