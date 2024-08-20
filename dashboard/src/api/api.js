@@ -1,5 +1,5 @@
-import axios from 'axios'
+import axios from "axios";
 const api = axios.create({
-    baseURL: 'https://shiningtn.onrender.com/api'
-})
-export default api
+  baseURL: "https://shining-api.onrender.com/api",
+});
+export default api;

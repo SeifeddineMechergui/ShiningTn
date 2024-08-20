@@ -18,7 +18,7 @@ const Stripe = ({ price, orderId }) => {
     }
     const create_payment = async () => {
         try {
-            const { data } = await axios.post('https://shiningtn.onrender.com/api/order/create-payment', { price }, { withCredentials: true })
+            const { data } = await axios.post('https://shining-api.onrender.com/api/order/create-payment', { price }, { withCredentials: true })
             setClientSecret(data.clientSecret)
         } catch (error) {
             console.log(error.response.data)
