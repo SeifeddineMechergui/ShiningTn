@@ -30,7 +30,7 @@ const io = socket(server, {
           process.env.client_customer_production_url,
           process.env.client_admin_production_url,
         ]
-      : ["http://localhost:3001", "https://shining-tn.vercel.app"],
+      : ["http://localhost:3001", "http://localhost:3000"],
   credentials: true,
 });
 

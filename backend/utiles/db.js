@@ -2,8 +2,7 @@ const mongoose = require('mongoose');
 
 module.exports.dbConnect = async () => {
     try {
-        if(process.env.mode==='pro'){
-            console.log(db)
+        if(process.env.mode ==='pro'){
             await mongoose.connect(process.env.DB_URL_PRO_URL, { useNewURLParser: true })
             console.log("database connect....")
         }else{
