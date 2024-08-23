@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 module.exports.authMiddleware = async (req, res, next) => {
     const{authorization}=req.headers
     if(authorization){
-        const token=authorization.split('Bearer')[1]
+        const token=authorization.split('Bearer ')[1]
     const { accessToken } = req.cookies
 
     if (!token) {

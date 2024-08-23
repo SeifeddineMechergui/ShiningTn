@@ -1,12 +1,10 @@
-import { AiFillDashboard, AiOutlineShoppingCart, AiOutlinePlus } from 'react-icons/ai';
-import { BiCategory, BiLoaderCircle } from 'react-icons/bi';
-import { FiUsers } from 'react-icons/fi';
-import { CiChat1 } from 'react-icons/ci';
-import { BsCurrencyDollar, BsChat } from 'react-icons/bs';
-import { RiProductHuntLine } from 'react-icons/ri';
-
+import { AiFillDashboard, AiOutlineShoppingCart, AiOutlinePlus } from 'react-icons/ai'
+import { BiCategory, BiLoaderCircle } from 'react-icons/bi'
+import { FiUsers } from 'react-icons/fi'
+import { CiChat1 } from 'react-icons/ci'
+import { BsCurrencyDollar, BsChat } from 'react-icons/bs'
+import { RiProductHuntLine } from 'react-icons/ri'
 export const allNav = [
-    // Admin Navigation Items
     {
         id: 1,
         title: 'Dashboard',
@@ -37,7 +35,7 @@ export const allNav = [
     },
     {
         id: 5,
-        title: 'Payment Request',
+        title: 'Payment request',
         icon: <BsCurrencyDollar />,
         role: 'admin',
         path: '/admin/dashboard/payment-request'
@@ -65,74 +63,73 @@ export const allNav = [
     },
     {
         id: 9,
-        title: 'All Product',
-        icon: <RiProductHuntLine />,
-        role: 'admin',
-        path: '/admin/dashboard/products'
-    },
-
-    // Seller Navigation Items
-    {
-        id: 11,
         title: 'Dashboard',
         icon: <AiFillDashboard />,
         role: 'seller',
         path: '/seller/dashboard'
     },
     {
-        id: 12,
+        id: 10,
         title: 'Add Product',
         icon: <AiOutlinePlus />,
         role: 'seller',
         path: '/seller/dashboard/add-product'
     },
     {
-        id: 13,
+        id: 11,
         title: 'All Product',
         icon: <RiProductHuntLine />,
         role: 'seller',
         path: '/seller/dashboard/products'
     },
     {
-        id: 15,
+        id: 11,
+        title: 'All Banner',
+        icon: <RiProductHuntLine />,
+        role: 'seller',
+        path: '/seller/dashboard/banners'
+    },
+
+    {
+        id: 12,
         title: 'Discount Product',
         icon: <RiProductHuntLine />,
         role: 'seller',
         path: '/seller/dashboard/discount-products'
     },
     {
-        id: 16,
+        id: 13,
         title: 'Orders',
         icon: <AiOutlineShoppingCart />,
         role: 'seller',
         path: '/seller/dashboard/orders'
     },
     {
-        id: 17,
+        id: 14,
         title: 'Payments',
         icon: <BsCurrencyDollar />,
         role: 'seller',
         path: '/seller/dashboard/payments'
     },
     {
-        id: 18,
+        id: 15,
         title: 'Chat Customer',
         icon: <BsChat />,
         role: 'seller',
         path: '/seller/dashboard/chat-customer'
     },
     {
-        id: 19,
+        id: 16,
         title: 'Chat Support',
         icon: <CiChat1 />,
         role: 'seller',
         path: '/seller/dashboard/chat-support'
     },
     {
-        id: 20,
+        id: 17,
         title: 'Profile',
         icon: <FiUsers />,
         role: 'seller',
         path: '/seller/dashboard/profile'
-    }
-];
+    },
+]

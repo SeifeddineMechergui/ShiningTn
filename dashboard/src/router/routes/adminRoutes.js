@@ -1,7 +1,4 @@
 import { lazy } from 'react'
-import AddBanner from '../../views/seller/AddBanner'
-import EditProduct from '../../views/seller/EditProduct'
-import Products from '../../views/seller/Products'
 const SellerDetails = lazy(() => import("../../views/admin/SellerDetails"))
 const DeactiveSellers = lazy(() => import("../../views/admin/DeactiveSellers"))
 const SellerRequest = lazy(() => import("../../views/admin/SellerRequest"))
@@ -13,23 +10,6 @@ const PaymentRequest = lazy(() => import("../../views/admin/PaymentRequest"))
 const ChatSeller = lazy(() => import("../../views/admin/ChatSeller"))
 const OrderDetails = lazy(() => import("../../views/admin/OrderDetails"))
 export const adminRoutes = [
-    {
-        path: 'admin/dashboard/products',
-        element: <Products />,
-        role: ['admin', 'seller']  // Allow both roles
-    },
-    {
-        path: '/seller/dashboard/add-banner/:productId',
-        element: <AddBanner />,
-        role: 'admin',
-        status: 'active'
-    },
-    {
-        path: '/seller/dashboard/edit-product/:productId',
-        element: <EditProduct />,
-        role: ['admin', 'seller'],  // Allow both roles
-        status: 'active'
-    },
     {
         path: 'admin/dashboard',
         element: <AdminDashboard />,

@@ -1,18 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import axios from 'axios'
-import {base_url} from '../../utils/config' 
+import api from '../../api/api'
+
 export const get_seller_dashboard_index_data = createAsyncThunk(
     'dashboardIndex/get_seller_dashboard_index_data',
-    async (_, { rejectWithValue, fulfillWithValue,getState }) => {
-        const {token}=getState().auth
-        const config={
-            headers:{
-                Authorization:`Bearer ${token}`
-            }
-        }
+    async (_, { rejectWithValue, fulfillWithValue }) => {
         try {
-            const { data } = await axios.get(`${base_url}/api/seller/get-dashboard-index-data`, config)
-            console.log('seifeddine mechergui'+data)
+            const { data } = await api.get(`/seller/get-dashboard-index-data`, { withCredentials: true })
+            console.log(data)
             return fulfillWithValue(data)
         } catch (error) {
             return rejectWithValue(error.response.data)
@@ -22,16 +16,9 @@ export const get_seller_dashboard_index_data = createAsyncThunk(
 
 export const get_admin_dashboard_index_data = createAsyncThunk(
     'dashboardIndex/get_admin_dashboard_index_data',
-    async (_, { rejectWithValue, fulfillWithValue ,getState}) => {
-        const {token}=getState().auth
-
-        const config={
-            headers:{
-                Authorization:`Bearer ${token}`
-            }
-        }
+    async (_, { rejectWithValue, fulfillWithValue }) => {
         try {
-            const { data } = await axios.get(`${base_url}/api/admin/get-dashboard-index-data`, config)
+            const { data } = await api.get(`/admin/get-dashboard-index-data`, { withCredentials: true })
             console.log(data)
             return fulfillWithValue(data)
         } catch (error) {
