@@ -12,7 +12,7 @@ export const get_seller_dashboard_index_data = createAsyncThunk(
         }
         try {
             const { data } = await axios.get(`${base_url}/api/seller/get-dashboard-index-data`, config)
-            console.log(data)
+            console.log('seifeddine mechergui'+data)
             return fulfillWithValue(data)
         } catch (error) {
             return rejectWithValue(error.response.data)
