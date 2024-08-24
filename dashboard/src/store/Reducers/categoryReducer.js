@@ -1,13 +1,21 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import api from '../../api/api'
+import axios from 'axios'
+import { base_url } from '../../utils/config'
+
 export const categoryAdd = createAsyncThunk(
     'category/categoryAdd',
-    async ({ name, image }, { rejectWithValue, fulfillWithValue }) => {
+    async ({ name, image }, { rejectWithValue, fulfillWithValue,getState }) => {
+        const {token}=getState().auth
+        const config={
+            headers:{
+                Authorization:`Bearer ${token}`
+            }
+        }
         try {
             const formData = new FormData()
             formData.append('name', name)
             formData.append('image', image)
-            const { data } = await api.post('/category-add', formData, { withCredentials: true })
+            const { data } = await axios.post(`${base_url}/api/category-add`, formData, config)
             return fulfillWithValue(data)
         } catch (error) {
             return rejectWithValue(error.response.data)
@@ -17,9 +25,15 @@ export const categoryAdd = createAsyncThunk(
 
 export const get_category = createAsyncThunk(
     'category/get_category',
-    async ({ parPage, page, searchValue }, { rejectWithValue, fulfillWithValue }) => {
+    async ({ parPage, page, searchValue }, { rejectWithValue, fulfillWithValue,getState }) => {
+        const {token}=getState().auth
+        const config={
+            headers:{
+                Authorization:`Bearer ${token}`
+            }
+        }
         try {
-            const { data } = await api.get(`/category-get?page=${page}&&searchValue=${searchValue}&&parPage=${parPage}`, { withCredentials: true })
+            const { data } = await axios.post(`${base_url}/api/category-get?page=${page}&&searchValue=${searchValue}&&parPage=${parPage}`, config)
             return fulfillWithValue(data)
         } catch (error) {
             return rejectWithValue(error.response.data)
