@@ -3,9 +3,15 @@ import api from '../../api/api'
 
 export const get_seller_dashboard_index_data = createAsyncThunk(
     'dashboardIndex/get_seller_dashboard_index_data',
-    async (_, { rejectWithValue, fulfillWithValue }) => {
+    async (_, { rejectWithValue, fulfillWithValue ,getState}) => {
+        const {token}=getState().auth
+        const config={
+            headers:{
+                Authorization:`Bearer ${token}`
+            }
+        }
         try {
-            const { data } = await api.get(`/seller/get-dashboard-index-data`, { withCredentials: true })
+            const { data } = await api.get(`/seller/get-dashboard-index-data`, config)
             console.log(data)
             return fulfillWithValue(data)
         } catch (error) {
@@ -16,9 +22,15 @@ export const get_seller_dashboard_index_data = createAsyncThunk(
 
 export const get_admin_dashboard_index_data = createAsyncThunk(
     'dashboardIndex/get_admin_dashboard_index_data',
-    async (_, { rejectWithValue, fulfillWithValue }) => {
+    async (_, { rejectWithValue, fulfillWithValue ,getState}) => {
+        const {token}=getState().auth
+        const config={
+            headers:{
+                Authorization:`Bearer ${token}`
+            }
+        }
         try {
-            const { data } = await api.get(`/admin/get-dashboard-index-data`, { withCredentials: true })
+            const { data } = await api.get(`/admin/get-dashboard-index-data`, config)
             console.log(data)
             return fulfillWithValue(data)
         } catch (error) {
