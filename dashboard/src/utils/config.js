@@ -1,18 +1,14 @@
-import axios from 'axios'
 const local = 'http://localhost:5000'
 const production = 'https://shining-api.onrender.com'
 
-let api_url=''
+let base_url=''
 let mode='pro'
 
 if(mode==='pro'){
-    api_url=production
+    base_url=production
 }else{
-    api_url=local
+    base_url=local
 }
 
-const api = axios.create({
-    baseURL: `${api_url}/api`,
-    withCredentials : true
-})
-export default api
+
+export  {base_url}
