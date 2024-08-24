@@ -3,9 +3,15 @@ import api from '../../api/api'
 
 export const get_seller_payemt_details = createAsyncThunk(
     'payment/get_seller_payemt_details',
-    async (sellerId, { rejectWithValue, fulfillWithValue }) => {
+    async (sellerId, { rejectWithValue, fulfillWithValue,getState }) => {
+        const {token}=getState().auth
+        const config={
+            headers:{
+                Authorization:`Bearer ${token}`
+            }
+        }
         try {
-            const { data } = await api.get(`/payment/seller-payment-details/${sellerId}`, { withCredentials: true })
+            const { data } = await api.get(`/payment/seller-payment-details/${sellerId}`, config)
             return fulfillWithValue(data)
         } catch (error) {
             return rejectWithValue(error.response.data)
@@ -15,9 +21,15 @@ export const get_seller_payemt_details = createAsyncThunk(
 
 export const send_withdrowal_request = createAsyncThunk(
     'payment/send_withdrowal_request',
-    async (info, { rejectWithValue, fulfillWithValue }) => {
+    async (info, { rejectWithValue, fulfillWithValue,getState }) => {
+        const {token}=getState().auth
+        const config={
+            headers:{
+                Authorization:`Bearer ${token}`
+            }
+        }
         try {
-            const { data } = await api.post(`/payment/withdrowal-request`, info, { withCredentials: true })
+            const { data } = await api.post(`/payment/withdrowal-request`, info, config)
             return fulfillWithValue(data)
         } catch (error) {
             return rejectWithValue(error.response.data)
@@ -28,9 +40,15 @@ export const send_withdrowal_request = createAsyncThunk(
 
 export const get_payment_request = createAsyncThunk(
     'payment/get_payment_request',
-    async (_, { rejectWithValue, fulfillWithValue }) => {
+    async (_, { rejectWithValue, fulfillWithValue,getState }) => {
+        const {token}=getState().auth
+        const config={
+            headers:{
+                Authorization:`Bearer ${token}`
+            }
+        }
         try {
-            const { data } = await api.get(`/payment/request`, { withCredentials: true })
+            const { data } = await api.get(`/payment/request`, config)
             return fulfillWithValue(data)
         } catch (error) {
             return rejectWithValue(error.response.data)
@@ -40,9 +58,15 @@ export const get_payment_request = createAsyncThunk(
 
 export const confirm_payment_request = createAsyncThunk(
     'payment/confirm_payment_request',
-    async (paymentId, { rejectWithValue, fulfillWithValue }) => {
+    async (paymentId, { rejectWithValue, fulfillWithValue,getState }) => {
+        const {token}=getState().auth
+        const config={
+            headers:{
+                Authorization:`Bearer ${token}`
+            }
+        }
         try {
-            const { data } = await api.post(`/payment/request-confirm`, { paymentId }, { withCredentials: true })
+            const { data } = await api.post(`/payment/request-confirm`, { paymentId }, config)
             return fulfillWithValue(data)
         } catch (error) {
             return rejectWithValue(error.response.data)
