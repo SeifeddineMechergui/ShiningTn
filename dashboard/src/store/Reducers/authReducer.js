@@ -14,7 +14,8 @@ export const admin_login = createAsyncThunk(
             return rejectWithValue(error.response.data)
         }
     }
-)
+) 
+
 
 export const seller_login = createAsyncThunk(
     'auth/seller_login',
