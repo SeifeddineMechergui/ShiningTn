@@ -1,24 +1,24 @@
-import React, { useEffect, useState } from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-import { getNavs } from '../navigation/index'
-import { logout } from '../store/Reducers/authReducer'
-import { BiLogInCircle } from 'react-icons/bi'
-import { useDispatch } from 'react-redux'
-import logo from '../assets/logo.png'
+import React, { useEffect, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { logout } from '../store/Reducers/authReducer';
+import { BiLogInCircle } from 'react-icons/bi';
+import { useDispatch } from 'react-redux';
+import logo from '../assets/logo.png';
+import { allNav } from '../navigation/allNav'; // Import the navigation array
 
 const Sidebar = ({ showSidebar, setShowSidebar }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { role } = useSelector(state => state.auth);
+  const { pathname } = useLocation();
+  const [filteredNav, setFilteredNav] = useState([]);
 
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
-
-  const { role } = useSelector(state => state.auth)
-  const { pathname } = useLocation()
-  const [allNav, setAllNav] = useState([])
   useEffect(() => {
-    const navs = getNavs(role)
-    setAllNav(navs)
-  }, [role])
+    // Filter navigation items based on user role
+    const navs = allNav.filter(nav => nav.role.includes(role));
+    setFilteredNav(navs);
+  }, [role]);
 
   return (
     <div>
@@ -32,12 +32,14 @@ const Sidebar = ({ showSidebar, setShowSidebar }) => {
         <div className='px-[16px]'>
           <ul>
             {
-              allNav.map((n, i) => <li key={i}>
-                <Link to={n.path} className={`${pathname === n.path ? 'bg-slate-600 shadow-indigo-500/30 text-white duration-500 ' : 'text-[#d0d2d6] font-normal duration-200'} px-[12px] py-[9px] rounded-sm flex justify-start items-center gap-[12px] hover:pl-4 transition-all w-full mb-1 `}>
-                  <span>{n.icon}</span>
-                  <span>{n.title}</span>
-                </Link>
-              </li>)
+              filteredNav.map((n, i) => (
+                <li key={i}>
+                  <Link to={n.path} className={`${pathname === n.path ? 'bg-slate-600 shadow-indigo-500/30 text-white duration-500 ' : 'text-[#d0d2d6] font-normal duration-200'} px-[12px] py-[9px] rounded-sm flex justify-start items-center gap-[12px] hover:pl-4 transition-all w-full mb-1`}>
+                    <span>{n.icon}</span>
+                    <span>{n.title}</span>
+                  </Link>
+                </li>
+              ))
             }
             <li>
               <button onClick={() => dispatch(logout({ navigate, role }))} className='text-[#d0d2d6] font-normal duration-200 px-[12px] py-[9px] rounded-sm flex justify-start items-center gap-[12px] hover:pl-4 transition-all w-full mb-1 '>
@@ -49,7 +51,7 @@ const Sidebar = ({ showSidebar, setShowSidebar }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;

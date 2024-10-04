@@ -43,13 +43,13 @@ export const sellerRoutes = [
     {
         path: '/seller/dashboard/edit-product/:productId',
         element: <EditProduct />,
-        role: 'seller',
+        role: ['admin'],
         status: 'active'
     },
     {
         path: '/seller/dashboard/products',
         element: <Products />,
-        role: 'seller',
+        role: ['seller','admin'],
         status: 'active'
     },
 
@@ -86,13 +86,13 @@ export const sellerRoutes = [
     {
         path: '/seller/dashboard/chat-customer/:customerId',
         element: <SellerToCustomer />,
-        role: 'seller',
+        role: 'admin',
         status: 'active'
     },
     {
         path: '/seller/dashboard/chat-customer',
         element: <SellerToCustomer />,
-        role: 'seller',
+        role: 'admin',
         status: 'active'
     },
     {
@@ -104,13 +104,13 @@ export const sellerRoutes = [
     {
         path: '/seller/dashboard/add-banner/:productId',
         element: <AddBanner />,
-        role: 'seller',
+        role: ['admin'],
         status: 'active'
     },
     {
         path: '/seller/dashboard/banners',
         element: <Banners />,
-        role: 'seller',
+        role: ['admin'],
         status: 'active'
     }
 ]

@@ -1,4 +1,9 @@
 import { lazy } from 'react'
+import AddProduct from '../../views/seller/AddProduct'
+import Banners from '../../views/seller/Banners'
+import AddBanner from '../../views/seller/AddBanner'
+import EditProduct from '../../views/seller/EditProduct'
+import Products from '../../views/seller/Products'
 const SellerDetails = lazy(() => import("../../views/admin/SellerDetails"))
 const DeactiveSellers = lazy(() => import("../../views/admin/DeactiveSellers"))
 const SellerRequest = lazy(() => import("../../views/admin/SellerRequest"))
@@ -64,5 +69,35 @@ export const adminRoutes = [
         path: 'admin/dashboard/order/details/:orderId',
         element: <OrderDetails />,
         role: 'admin'
+    },
+    {
+        path: '/seller/dashboard/add-banner/:productId',
+        element: <AddBanner />,
+        role: ['admin'],
+        status: 'active'
+    },
+    {
+        path: '/seller/dashboard/banners',
+        element: <Banners />,
+        role: ['seller','admin'],
+        status: 'active'
+    },
+    {
+        path: '/seller/dashboard/add-product',
+        element: <AddProduct />,
+        role: ['seller','admin'],
+        status: 'active'
+    },
+    {
+        path: '/seller/dashboard/edit-product/:productId',
+        element: <EditProduct />,
+        role: ['admin'],
+        status: 'active'
+    },
+    {
+        path: '/seller/dashboard/products',
+        element: <Products />,
+        role: ['seller','admin'],
+        status: 'active'
     }
 ]

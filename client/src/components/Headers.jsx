@@ -176,10 +176,9 @@ const Headers = () => {
             <div className='w-[85%] lg:w-[90%] mx-auto'>
                 <div className='flex w-full flex-wrap'>
                     {["Women", "Men", "Kids", "House", "Accessories", "Beauty"].map((category, index) => (
-                        <div key={index} className='w-2/12 md-lg:w-3/12 relative group'>
+                        <div key={index} className='w-2/12 md-lg:w-3/12 s:w-1/4 relative group'>
                             <div className='h-[50px] bg-violet-400 text-white flex justify-between items-center px-4 font-bold text-md cursor-pointer' onClick={() => setCategoryShow(category)}>
                                 <div className="flex justify-center items-center gap-3">
-                                    <span><FaList /></span>
                                     <span>{category}</span>
                                 </div>
                                 <span className='pt-1'><MdOutlineKeyboardArrowDown /></span>
