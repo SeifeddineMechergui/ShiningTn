@@ -33,7 +33,6 @@ export const logout = createAsyncThunk(
     'auth/logout',
     async ({ navigate, role }, { rejectWithValue, fulfillWithValue }) => {
         try {
-            const { data } = await axios.get('/logout', { withCredentials: true })
             localStorage.removeItem('accessToken')
             if (role === 'admin') {
                 navigate('/admin/login')
@@ -41,9 +40,8 @@ export const logout = createAsyncThunk(
                 navigate('/login')
             }
 
-            return fulfillWithValue(data)
         } catch (error) {
-            return rejectWithValue(error.response.data)
+            return rejectWithValue(error)
         }
     }
 )
