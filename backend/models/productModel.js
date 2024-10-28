@@ -5,6 +5,12 @@ const productSchema = new Schema({
         type: Schema.ObjectId,
         required: true
     },
+    status:{
+        type:Boolean,
+        required:true,
+        default:false
+
+    },
     name: {
         type: String,
         required: true

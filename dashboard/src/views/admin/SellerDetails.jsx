@@ -112,6 +112,8 @@ const SellerDetails = () => {
                 </div>
             </div>
         </div>
+
+        
     )
 }
 

@@ -7,7 +7,7 @@ let mode='pro'
 if(mode==='pro'){
     base_url=production
 }else{
-    base_url='https://shining-api.onrender.com'
+    base_url=local
 }
 
 

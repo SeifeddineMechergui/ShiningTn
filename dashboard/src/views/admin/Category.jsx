@@ -126,6 +126,10 @@ const Category = () => {
                                     <label htmlFor="name">Category name</label>
                                     <input value={state.name} onChange={(e) => setState({ ...state, name: e.target.value })} className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#283046] border border-slate-700 rounded-md text-[#d0d2d6]' type="text" id='name' name='category_name' placeholder='category name' required />
                                 </div>
+                                <div className='flex flex-col w-full gap-1 mb-3'>
+                                    <label htmlFor="name">Sub Category</label>
+                                    <input value={state.subCat} onChange={(e) => setState({ ...state, subCat: e.target.value })} className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#283046] border border-slate-700 rounded-md text-[#d0d2d6]' type="text" id='name' name='subCat' placeholder='subCat name'  />
+                                </div>
                                 <div>
 
                                     <label className='flex justify-center items-center flex-col h-[238px] cursor-pointer border border-dashed hover:border-indigo-500 w-full border-[#d0d2d6]' htmlFor="image">

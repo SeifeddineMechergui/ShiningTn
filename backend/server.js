@@ -10,6 +10,7 @@ const socket = require("socket.io");
 
 const server = http.createServer(app);
 
+// CORS configuration
 app.use(
   cors({
     origin:
@@ -34,6 +35,7 @@ const io = socket(server, {
   credentials: true,
 });
 
+// Socket management
 var allCustomer = [];
 var allSeller = [];
 
@@ -49,8 +51,8 @@ const addUser = (customerId, socketId, userInfo) => {
 };
 
 const addSeller = (sellerId, socketId, userInfo) => {
-  const chaeckSeller = allSeller.some((u) => u.sellerId === sellerId);
-  if (!chaeckSeller) {
+  const checkSeller = allSeller.some((u) => u.sellerId === sellerId);
+  if (!checkSeller) {
     allSeller.push({
       sellerId,
       socketId,
@@ -138,15 +140,15 @@ io.on("connection", (soc) => {
   });
 });
 
+// Middleware
 app.use(bodyParser.json());
 app.use(cookieParser());
 
+// Routes
 app.use("/api", require("./routes/chatRoutes"));
-
 app.use("/api", require("./routes/paymentRoutes"));
 app.use("/api", require("./routes/bannerRoutes"));
 app.use("/api", require("./routes/dashboard/dashboardIndexRoutes"));
-
 app.use("/api/home", require("./routes/home/homeRoutes"));
 app.use("/api", require("./routes/order/orderRoutes"));
 app.use("/api", require("./routes/home/cardRoutes"));
@@ -155,7 +157,10 @@ app.use("/api", require("./routes/home/customerAuthRoutes"));
 app.use("/api", require("./routes/dashboard/sellerRoutes"));
 app.use("/api", require("./routes/dashboard/categoryRoutes"));
 app.use("/api", require("./routes/dashboard/productRoutes"));
+app.use("/api", require("./routes/dashboard/sellerStatisticsRoutes")); // Add this line for seller statistics
+
 app.get("/", (req, res) => res.send("Hello World!"));
+
 const port = process.env.PORT;
 dbConnect();
 server.listen(port, () => console.log(`Server is running on port ${port}!`));

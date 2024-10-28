@@ -13,6 +13,11 @@ const categorySchema = new Schema({
         type: String,
         required: true
     }
+    ,
+    subCat: {
+        type: String,
+        required: false
+    }
 }, { timestamps: true })
 
 categorySchema.index({

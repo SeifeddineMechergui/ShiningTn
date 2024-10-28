@@ -1,9 +1,10 @@
-import { AiFillDashboard, AiOutlineShoppingCart, AiOutlinePlus } from 'react-icons/ai'
-import { BiCategory, BiLoaderCircle } from 'react-icons/bi'
-import { FiUsers } from 'react-icons/fi'
-import { CiChat1 } from 'react-icons/ci'
-import { BsCurrencyDollar, BsChat } from 'react-icons/bs'
-import { RiProductHuntLine } from 'react-icons/ri'
+import { AiFillDashboard, AiOutlineShoppingCart, AiOutlinePlus } from 'react-icons/ai';
+import { BiCategory, BiLoaderCircle } from 'react-icons/bi';
+import { FiUsers } from 'react-icons/fi';
+import { CiChat1 } from 'react-icons/ci';
+import { BsCurrencyDollar, BsChat } from 'react-icons/bs';
+import { RiProductHuntLine } from 'react-icons/ri';
+
 export const allNav = [
     // Admin-only routes
     {
@@ -62,77 +63,91 @@ export const allNav = [
         role: ['admin'],
         path: '/admin/dashboard/chat-sellers'
     },
+    {
+        id: 9,
+        title: 'Seller Statistics', // New entry for Seller Statistics
+        icon: <RiProductHuntLine />,
+        role: ['admin'], // Only accessible by admin
+        path: '/admin/dashboard/seller-statistics'
+    },
     
     // Seller-only routes
     {
-        id: 9,
+        id: 10,
         title: 'Dashboard',
         icon: <AiFillDashboard />,
         role: ['seller'],
         path: '/seller/dashboard'
     },
     {
-        id: 10,
+        id: 11,
         title: 'Add Product',
         icon: <AiOutlinePlus />,
-        role: ['seller'], // Accessible by both
+        role: ['seller'],
         path: '/seller/dashboard/add-product'
     },
     {
-        id: 11,
+        id: 12,
         title: 'All Products',
         icon: <RiProductHuntLine />,
-        role: ['seller','admin'], // Accessible by both
+        role: ['seller', 'admin'], // Accessible by both
         path: '/seller/dashboard/products'
     },
     {
-        id: 12,
+        id: 13,
         title: 'Banners',
         icon: <RiProductHuntLine />,
         role: ['admin'],
         path: '/seller/dashboard/banners'
     },
     {
-        id: 13,
+        id: 14,
         title: 'Discount Products',
         icon: <RiProductHuntLine />,
         role: ['seller'],
         path: '/seller/dashboard/discount-products'
     },
     {
-        id: 14,
+        id: 15,
         title: 'Orders',
         icon: <AiOutlineShoppingCart />,
         role: 'seller', // Accessible by both
         path: '/seller/dashboard/orders'
     },
     {
-        id: 15,
+        id: 16,
         title: 'Payments',
         icon: <BsCurrencyDollar />,
         role: ['seller'],
         path: '/seller/dashboard/payments'
     },
     {
-        id: 16,
+        id: 17,
         title: 'Chat Customer',
         icon: <BsChat />,
         role: ['admin'],
         path: '/seller/dashboard/chat-customer'
     },
     {
-        id: 17,
+        id: 18,
         title: 'Chat Support',
         icon: <CiChat1 />,
         role: ['seller'],
         path: '/seller/dashboard/chat-support'
     },
     {
-        id: 18,
+        id: 19,
         title: 'Profile',
         icon: <FiUsers />,
         role: ['seller'],
         path: '/seller/dashboard/profile'
     },
+    {
+        id:20,
+        title:'Products Requests ',
+        icon:<RiProductHuntLine/>,
+        role:['admin'],
+        path:'/admin/dashboard/products-request'
+
+    }
 ];
-    

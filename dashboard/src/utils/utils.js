@@ -7,4 +7,4 @@ export const overrideStyle = {
     alignItems: "center"
 }
 
-export const socket = io('https://shining-api.onrender.com')
+export const socket = io('http://localhost:5000')
