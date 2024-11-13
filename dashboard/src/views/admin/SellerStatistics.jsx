@@ -23,15 +23,32 @@ const SellerStatistics = () => {
     const totalPages = Math.ceil(totalStatistics / parPage);
 
     const handleGivingUpdate = async (sellerId) => {
+        const amountToSend = parseFloat(givingAmount);
+
+        // Validate that the amount is a positive number
+        if (isNaN(amountToSend) || amountToSend <= 0) {
+            console.error('Invalid amount. The amount must be greater than 0.');
+            return;
+        }
+
+        console.log('Sending update request...', { sellerId, amount: amountToSend });
+
         try {
-            const response = await api.post(`/admin/seller/give`, {
+            const response = await api.post('/admin/seller/give', {
                 sellerId,
-                amount: givingAmount,
+                amount: amountToSend, // Send the valid amount
             });
-            console.log('Giving updated successfully:', response.data);
-            dispatch(get_seller_statistics({ parPage, page: currentPage }));
-            setGivingAmount(0);
-            setSelectedSellerId(null);
+
+            console.log('Response from API:', response.data);
+
+            if (response.status === 200) {
+                // Refresh seller statistics
+                dispatch(get_seller_statistics({ parPage, page: currentPage }));
+                setGivingAmount(0);  // Reset the input field
+                setSelectedSellerId(null);  // Deselect the seller
+            } else {
+                console.error('Failed to update giving:', response.data);
+            }
         } catch (error) {
             console.error('Error updating giving:', error);
         }

@@ -36,23 +36,14 @@ const sellerStatisticsSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(get_seller_statistics.pending, (state) => {
-                console.log("Fetching seller statistics...");
                 state.loader = true;
             })
             .addCase(get_seller_statistics.fulfilled, (state, { payload }) => {
-                console.log("Seller statistics fetched successfully:", payload);
-                state.statistics = payload.statistics.map(stat => ({
-                    ...stat,
-                    sellerName: stat.sellerName || 'Unknown Seller',
-                    totalRevenue: stat.totalRevenue || 0,
-                    totalSold: stat.totalSold || 0,
-                    adminGiving: stat.adminGiving || 0, // Added adminGiving
-                })) || [];
-                state.totalStatistics = payload.totalStatistics || 0; // Default to 0 if undefined
+                state.statistics = payload.statistics || [];
+                state.totalStatistics = payload.totalStatistics || 0;
                 state.loader = false;
             })
             .addCase(get_seller_statistics.rejected, (state, { payload }) => {
-                console.error("Error fetching seller statistics:", payload);
                 state.errorMessage = payload || 'Error fetching statistics';
                 state.loader = false;
             });

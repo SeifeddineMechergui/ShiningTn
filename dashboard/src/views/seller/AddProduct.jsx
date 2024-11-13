@@ -157,12 +157,12 @@ const AddProduct = () => {
                                     <div className='pt-14'></div>
                                     <div className='flex justify-start items-start flex-col h-[200px] overflow-x-scroll'>
                                         {
-                                            allCategory.map((c, i) => <span className={`px-4 py-2 hover:bg-indigo-500 hover:text-white hover:shadow-lg w-full cursor-pointer ${category === c.name && 'bg-indigo-500'}`} onClick={() => {
+                                            allCategory.map((c, i) => <span className={`px-4 py-2 hover:bg-indigo-500 hover:text-white hover:shadow-lg w-full cursor-pointer ${category === c.subCat && 'bg-indigo-500'}`} onClick={() => {
                                                 setCateShow(false)
-                                                setCategory(c.name)
+                                                setCategory(c.subCat)
                                                 setSearchValue('')
                                                 setAllCategory(categorys)
-                                            }}>{c.name}</span>)
+                                            }}>{c.subCat}</span>)
                                         }
                                     </div>
                                 </div>

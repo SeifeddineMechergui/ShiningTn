@@ -4,6 +4,6 @@ const sellerStatisticsController = require('../controllers/sellerStatisticsContr
 
 // Get statistics for all sellers
 router.get('/admin/seller/statistics', sellerStatisticsController.getAllSellerStatistics);
-app.post('/admin/seller/give', sellerStatisticsController.updateAdminGiving);
+router.post('/admin/seller/give', sellerStatisticsController.updateAdminGiving);
 
 module.exports = router;

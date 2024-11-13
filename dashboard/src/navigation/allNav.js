@@ -36,13 +36,6 @@ export const allNav = [
         path: '/admin/dashboard/sellers'
     },
     {
-        id: 5,
-        title: 'Payment Request',
-        icon: <BsCurrencyDollar />,
-        role: ['admin'],
-        path: '/admin/dashboard/payment-request'
-    },
-    {
         id: 6,
         title: 'Deactive Sellers',
         icon: <FiUsers />,
@@ -99,13 +92,6 @@ export const allNav = [
         icon: <RiProductHuntLine />,
         role: ['admin'],
         path: '/seller/dashboard/banners'
-    },
-    {
-        id: 14,
-        title: 'Discount Products',
-        icon: <RiProductHuntLine />,
-        role: ['seller'],
-        path: '/seller/dashboard/discount-products'
     },
     {
         id: 15,
