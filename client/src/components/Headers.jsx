@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { get_card_products, get_wishlist_products } from '../store/reducers/cardReducer';
 import { AiFillHeart, AiFillShopping } from 'react-icons/ai';
 import { FaUser } from 'react-icons/fa';
+import { FaList, FaLock } from 'react-icons/fa';
 
 const Headers = () => {
     const dispatch = useDispatch();
