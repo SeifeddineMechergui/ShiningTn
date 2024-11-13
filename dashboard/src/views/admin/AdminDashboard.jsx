@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { BsCurrencyDollar } from 'react-icons/bs'
 import { RiProductHuntLine } from 'react-icons/ri'
-import { FaUsers } from 'react-icons/fa'
+import { FaUser, FaUsers } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
 import Chart from 'react-apexcharts'
@@ -117,7 +117,7 @@ const AdminDashboard = () => {
                         <span className='text-md font-medium'>Sellers</span>
                     </div>
                     <div className='w-[46px] h-[47px] rounded-full bg-[#00cfe81f] flex justify-center items-center text-xl'>
-                        <FaUsers className='text-[#00cfe8] shadow-lg' />
+                        <FaUser className='text-[#00cfe8] shadow-lg' />
                     </div>
                 </div>
                 <div className='flex justify-between items-center p-5 bg-[#283046] rounded-md gap-3'>

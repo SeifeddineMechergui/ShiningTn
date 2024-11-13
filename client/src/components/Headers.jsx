@@ -3,6 +3,8 @@ import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { get_card_products, get_wishlist_products } from '../store/reducers/cardReducer';
+import { AiFillHeart, AiFillShopping } from 'react-icons/ai';
+import { FaUser } from 'react-icons/fa';
 
 const Headers = () => {
     const dispatch = useDispatch();
@@ -141,7 +143,7 @@ const Headers = () => {
             <div className='w-[85%] lg:w-[90%] mx-auto'>
                 <div className='flex w-full flex-wrap'>
                     {categoryNames.map((category, index) => {
-                        const { subCats, imawges } = groupedCategories[category] || { subCats: [], images: [] };
+                        const { subCats, images } = groupedCategories[category] || { subCats: [], images: [] };
                         
                         return (
                             <div key={index} className='w-2/12 md-lg:w-3/12 s:w-1/4 relative group'>
