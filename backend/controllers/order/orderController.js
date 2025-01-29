@@ -88,7 +88,7 @@ class orderController {
                     products: storePro,
                     price: pri,
                     payment_status: 'unpaid',
-                    shippingInfo: 'Dhaka myshop Warehouse',
+                    shippingInfo: 'myshop Warehouse',
                     delivery_status: 'pending',
                     date: tempDate
                 });

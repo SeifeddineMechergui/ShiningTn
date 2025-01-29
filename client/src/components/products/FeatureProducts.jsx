@@ -61,6 +61,9 @@ const FeatureProducts = ({ products }) => {
                 {
                     products.map((p, i) => (
                         <div key={i} className='border group transition-all duration-500 hover:shadow-md hover:-mt-3'>
+
+<Link to={`/product/details/${p.slug}`}>
+
                             <div className='relative overflow-hidden'>
                                 {
                                     p.discount ? (
@@ -91,6 +94,9 @@ const FeatureProducts = ({ products }) => {
                                     </li>
                                 </ul>
                             </div>
+                            
+</Link>
+
                             <div className='py-3 text-slate-600 px-2'>
                                 <h2>{p.name}</h2>
                                 <div className='flex justify-start items-center gap-3'>
