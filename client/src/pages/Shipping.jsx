@@ -161,7 +161,7 @@ const Shipping = () => {
                                 <div className='bg-white font-medium p-5 text-slate-600 flex flex-col gap-3'>
                                     <h2 className='text-xl font-semibold'>Order Summary</h2>
                                     <div className='flex justify-between items-center'>
-                                        <span>Items Total({price})</span>
+                                        <span>Products price</span>
                                         <span>${price}</span>
                                     </div>
                                     <div className='flex justify-between items-center'>
@@ -172,10 +172,7 @@ const Shipping = () => {
                                         <span>Total Payment</span>
                                         <span>${price + shipping_fee}</span>
                                     </div>
-                                    <div className='flex justify-between items-center'>
-                                        <span>Total</span>
-                                        <span>${price + shipping_fee}</span>
-                                    </div>
+
                                     <button onClick={placeOrder} disabled={res ? false : true} className={`px-5 py-[6px] rounded-sm hover:shadow-orange-500/20 hover:shadow-lg ${res ? 'bg-orange-500' : 'bg-orange-300'} text-sm text-white uppercase`}>Place Order</button>
                                 </div>
                             </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FaEye } from 'react-icons/fa';
+import { FaEye, FaTrash } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import Pagination from '../Pagination';
 import { useSelector, useDispatch } from 'react-redux';
@@ -8,10 +8,11 @@ import { get_products } from '../../store/Reducers/productReducer'; // Ensure th
 
 const ProductRequest = () => {
     const dispatch = useDispatch();
-    const { products, totalProduct } = useSelector(state => state.product);
+    const { products } = useSelector(state => state.product);
     const [currentPage, setCurrentPage] = useState(1);
     const [searchValue, setSearchValue] = useState('');
     const [parPage, setParPage] = useState(5);
+    const [dropdownVisible, setDropdownVisible] = useState(null); // Store product id of the dropdown visible
 
     useEffect(() => {
         dispatch(get_products({
@@ -23,6 +24,16 @@ const ProductRequest = () => {
 
     // Filter products to only include those with status false
     const filteredProducts = products.filter(product => product.status === false);
+
+    const handleDropdownToggle = (productId) => {
+        // Toggle dropdown visibility for the selected product
+        setDropdownVisible(dropdownVisible === productId ? null : productId);
+    };
+
+    const handleCloseDropdown = () => {
+        // Close dropdown
+        setDropdownVisible(null);
+    };
 
     return (
         <div className='px-2 lg:px-7 pt-5'>
@@ -53,9 +64,42 @@ const ProductRequest = () => {
                                         <td className='py-2 px-4'>{product.status ? 'Active' : 'Inactive'}</td>
                                         <td className='py-2 px-4'>
                                             <div className='flex justify-start items-center gap-4'>
-                                                <Link to={`/admin/dashboard/product/details/${product._id}`} className='p-[6px] bg-green-500 rounded hover:shadow-lg hover:shadow-green-500/50'>
+                                                <Link to={`/seller/dashboard/edit-product/${product._id}`} className='p-[6px] bg-green-500 rounded hover:shadow-lg hover:shadow-green-500/50'>
                                                     <FaEye />
                                                 </Link>
+
+                                                {/* Delete button to toggle the dropdown */}
+                                                <button
+                                                    className='p-[6px] bg-red-500 rounded hover:shadow-lg hover:shadow-red-500/50'
+                                                    onClick={() => handleDropdownToggle(product._id)} // Pass product id for dropdown toggle
+                                                >
+                                                    <FaTrash />
+                                                </button>
+
+                                                {/* Dropdown Menu */}
+                                                {dropdownVisible === product._id && (
+                                                    <ul className="dropdown-menu absolute bg-white border rounded shadow-lg w-40 mt-2 z-10">
+                                                        <li
+                                                            className="px-4 py-2 hover:bg-gray-200 cursor-pointer"
+                                                            onClick={handleCloseDropdown}
+                                                        >
+                                                            Active
+                                                        </li>
+                                                        <li
+                                                            className="px-4 py-2 hover:bg-gray-200 cursor-pointer"
+                                                            onClick={handleCloseDropdown}
+                                                        >
+                                                            Inactive
+                                                        </li>
+                                                        {/* Close option */}
+                                                        <li
+                                                            className="px-4 py-2 hover:bg-gray-200 cursor-pointer"
+                                                            onClick={handleCloseDropdown}
+                                                        >
+                                                            Close
+                                                        </li>
+                                                    </ul>
+                                                )}
                                             </div>
                                         </td>
                                     </tr>

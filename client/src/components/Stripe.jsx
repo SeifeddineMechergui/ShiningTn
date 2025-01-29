@@ -24,17 +24,7 @@ const Stripe = ({ price, orderId }) => {
             console.log(error.response.data)
         }
     }
-    return (
-        <div className='mt-4'>
-            {
-                clientSecret ? (
-                    <Elements options={options} stripe={stripePromise}>
-                        <CheckoutForm orderId={orderId} />
-                    </Elements>
-                ) : <button onClick={create_payment} className='px-10 py-[6px] rounded-sm hover:shadow-orange-500/20 hover:shadow-lg bg-orange-500 text-white'>Start Payment</button>
-            }
-        </div>
-    )
+
 }
 
 export default Stripe

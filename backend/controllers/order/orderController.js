@@ -8,6 +8,7 @@ const { mongo: { ObjectId } } = require('mongoose')
 const { responseReturn } = require('../../utiles/response')
 
 const moment = require('moment')
+const productModel = require('../../models/productModel')
 const stripe = require('stripe')('sk_test_51Nk8Y4F0B89ncn3xMHxYCwnaouDR6zuX83ckbJivv2jOUJ9CTka6anJcKMLnatgeBUeQq1RcRYynSPgp6f5zS4qF00YZFMYHuD')
 
 class orderController {
@@ -38,26 +39,27 @@ class orderController {
             shipping_fee,
             shippingInfo,
             userId
-        } = req.body
-        let authorOrderData = []
-        let cardId = []
-        const tempDate = moment(Date.now()).format('LLL')
-
-        let customerOrderProduct = []
-
+        } = req.body;
+        let authorOrderData = [];
+        let cardId = [];
+        const tempDate = moment(Date.now()).format('LLL');
+    
+        let customerOrderProduct = [];
+    
         for (let i = 0; i < products.length; i++) {
-            const pro = products[i].products
+            const pro = products[i].products;
             for (let j = 0; j < pro.length; j++) {
-                let tempCusPro = pro[j].productInfo
-                tempCusPro.quantity = pro[j].quantity
-                customerOrderProduct.push(tempCusPro)
+                let tempCusPro = pro[j].productInfo;
+                tempCusPro.quantity = pro[j].quantity;
+                customerOrderProduct.push(tempCusPro);
                 if (pro[j]._id) {
-                    cardId.push(pro[j]._id)
+                    cardId.push(pro[j]._id);
                 }
             }
         }
-
+    
         try {
+            // Create the order for the customer
             const order = await customerOrder.create({
                 customerId: userId,
                 shippingInfo,
@@ -66,18 +68,20 @@ class orderController {
                 delivery_status: 'pending',
                 payment_status: 'unpaid',
                 date: tempDate
-            })
+            });
+    
+            // Loop through products to store them in author's order data
             for (let i = 0; i < products.length; i++) {
-                const pro = products[i].products
-                const pri = products[i].price
-                const sellerId = products[i].sellerId
-                let storePro = []
+                const pro = products[i].products;
+                const pri = products[i].price;
+                const sellerId = products[i].sellerId;
+                let storePro = [];
                 for (let j = 0; j < pro.length; j++) {
-                    let tempPro = pro[j].productInfo
-                    tempPro.quantity = pro[j].quantity
-                    storePro.push(tempPro)
+                    let tempPro = pro[j].productInfo;
+                    tempPro.quantity = pro[j].quantity;
+                    storePro.push(tempPro);
                 }
-
+    
                 authorOrderData.push({
                     orderId: order.id,
                     sellerId,
@@ -87,23 +91,50 @@ class orderController {
                     shippingInfo: 'Dhaka myshop Warehouse',
                     delivery_status: 'pending',
                     date: tempDate
-                })
+                });
             }
-            await authOrderModel.insertMany(authorOrderData)
+    
+            // Insert the author's order data
+            await authOrderModel.insertMany(authorOrderData);
+    
+            // Delete the cart items after placing the order
             for (let k = 0; k < cardId.length; k++) {
-                await cardModel.findByIdAndDelete(cardId[k])
+                await cardModel.findByIdAndDelete(cardId[k]);
             }
+    
+            // **Decreasing the stock after placing the order**
+            for (let i = 0; i < products.length; i++) {
+                const pro = products[i].products;
+                for (let j = 0; j < pro.length; j++) {
+                    const productId = pro[j].productInfo._id;
+                    const quantityOrdered = pro[j].quantity;
+    
+                    // Decrease the stock by the ordered quantity
+                    await productModel.findByIdAndUpdate(
+                        productId,
+                        { $inc: { stock: -quantityOrdered } } // Decrease stock by the ordered quantity
+                    );
+                }
+            }
+    
+            // Call payment check after a delay
             setTimeout(() => {
-                this.paymentCheck(order.id)
-            }, 15000)
+                this.paymentCheck(order.id);
+            }, 15000);
+    
+            // Send success response
             responseReturn(res, 201, {
-                message: "order placeed success",
+                message: "Order placed successfully",
                 orderId: order.id
-            })
+            });
+    
         } catch (error) {
-            console.log(error.message)
+            console.log(error.message);
+            // Send error response if anything fails
+            responseReturn(res, 500, { message: "Something went wrong" });
         }
     }
+    
 
     get_customer_databorad_data = async (req, res) => {
         const {

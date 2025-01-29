@@ -191,9 +191,7 @@ const CategoryShops = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className='py-5 flex flex-col gap-4 md:hidden'>
-                                <Products title="Latest Products" products={latest_product} />
-                            </div>
+
                         </div>
                         <div className='w-9/12 md-lg:w-8/12 md:w-full'>
                             <div className='pl-8 md:pl-0'>

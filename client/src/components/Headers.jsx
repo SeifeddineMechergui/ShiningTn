@@ -133,8 +133,21 @@ const Headers = () => {
                             <img src="https://shining-tn.vercel.app/images/logo.png" alt="logo" />
                         </Link>
                         <ul className='flex flex-col justify-start items-start text-md font-semibold uppercase'>
+                        {userInfo ? (
+                                            <Link className='flex cursor-pointer justify-center items-center gap-2 text-sm' to='/dashboard'>
+                                                <span><FaUser /></span>
+                                                <span>{userInfo.name}</span>
+                                            </Link>
+                                        ) : (
+                                            <Link to='/login' className='flex cursor-pointer justify-center items-center gap-2 text-sm'>
+                                                <span><FaLock /></span>
+                                                <span>Login</span>
+                                            </Link>
+                                        )}
+                            
                             <li><Link to="/" className={`py-2 block ${pathname === '/' ? 'text-[#7fad39]' : 'text-slate-600'}`}>Home</Link></li>
                             <li><Link to='/shops' className={`py-2 block ${pathname === '/shop' ? 'text-[#7fad39]' : 'text-slate-600'}`}>Shop</Link></li>
+
                         </ul>
                     </div>
                 </div>

@@ -94,7 +94,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className='w-[85%] flex flex-wrap justify-center items-center text-slate-600 mx-auto py-5 text-center'>
-                <span>Copiright ©2024 All rights reserved | mady by <a className='text-blue-500 underline' href="">Mechergui Seifeddine</a></span>
+                <span>Copyright ©2025 All rights reserved SB MALL| made by <a className='text-blue-500 underline' href="">Mechergui Seifeddine</a></span>
             </div>
 
             <div className='hidden fixed md-lg:block w-[50px] bottom-3 h-[110px] right-2 bg-white rounded-full p-2'>

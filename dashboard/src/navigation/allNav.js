@@ -101,13 +101,6 @@ export const allNav = [
         path: '/seller/dashboard/orders'
     },
     {
-        id: 16,
-        title: 'Payments',
-        icon: <BsCurrencyDollar />,
-        role: ['seller'],
-        path: '/seller/dashboard/payments'
-    },
-    {
         id: 17,
         title: 'Chat Customer',
         icon: <BsChat />,
@@ -127,13 +120,5 @@ export const allNav = [
         icon: <FiUsers />,
         role: ['seller'],
         path: '/seller/dashboard/profile'
-    },
-    {
-        id:20,
-        title:'Products Requests ',
-        icon:<RiProductHuntLine/>,
-        role:['admin'],
-        path:'/admin/dashboard/products-request'
-
     }
 ];
